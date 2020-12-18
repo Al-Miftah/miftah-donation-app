@@ -11,6 +11,10 @@ declare const PaystackPop: any;
   styleUrls: ['./donate.page.scss'],
 })
 export class DonatePage extends BasePage implements OnInit {
+  public amount: number;
+  public payments: any;
+  public paymentType = 'monthly';
+
   public donation: any = {
     key: AppConfig.PAY_STACK.key,
     ref: `miftah-${Date.now()}`,
@@ -30,9 +34,6 @@ export class DonatePage extends BasePage implements OnInit {
       organization_id: 1,
     },
   };
-  public payments: any;
-  public amount: number;
-  public paymentType = 'monthly';
   public onetimePayments = [
     {
       name: 'GH₵ 5',
