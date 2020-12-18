@@ -11,10 +11,7 @@ import { AuthService } from '../services/auth/auth.service';
 })
 export class TransactionsPage extends BasePage implements OnInit {
   transactions: any;
-  constructor(
-    injector: Injector,
-    private api: ApiService
-  ) {
+  constructor(injector: Injector, private api: ApiService) {
     super(injector);
   }
 

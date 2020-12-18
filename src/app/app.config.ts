@@ -24,7 +24,7 @@ export class AppConfig {
   public static get PAY_STACK(): any {
     return {
       key: 'pk_test_8c5e535136189ee160979ef717d572e567ad849c',
-      plan: 'PLN_d8fc6gdpgdeo1qf'
+      plan: 'PLN_d8fc6gdpgdeo1qf',
     };
   }
 }

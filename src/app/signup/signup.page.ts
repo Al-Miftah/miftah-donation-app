@@ -14,7 +14,7 @@ export class SignupPage extends BasePage implements OnInit {
     name: '',
     phone_number: '',
     password: '',
-    password_confirmation: ''
+    password_confirmation: '',
   };
   public code = {
     code: '+233',
@@ -34,10 +34,7 @@ export class SignupPage extends BasePage implements OnInit {
   ngOnInit() {}
 
   async submit() {
-    if (
-      this.user.name === '' ||
-      this.user.password === ''
-    ) {
+    if (this.user.name === '' || this.user.password === '') {
       return this.showToast('Please fill all required fields', 3000, undefined);
     }
 

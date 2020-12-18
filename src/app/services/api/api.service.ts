@@ -173,6 +173,8 @@ export class ApiService {
    * verifyTransaction
    */
   public verifyTransaction(ref: string): Promise<any> {
-    return this.http.get(`${AppConfig.BASE_URL}/checkout/paystack/verify?reference=${ref}`);
+    return this.http.get(
+      `${AppConfig.BASE_URL}/checkout/paystack/verify?reference=${ref}`
+    );
   }
 }

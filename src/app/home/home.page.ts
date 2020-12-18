@@ -19,7 +19,7 @@ export class HomePage extends BasePage implements OnInit {
     super(injector);
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   public async logout() {
     try {

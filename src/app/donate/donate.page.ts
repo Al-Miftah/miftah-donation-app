@@ -23,12 +23,12 @@ export class DonatePage extends BasePage implements OnInit {
     plan: null,
     amount: null,
     channels: ['card', 'mobile_money'],
-    metadata : {
+    metadata: {
       user_id: this.auth.user.id,
       plan_id: null,
       payment_type: 'monthly',
-      organization_id: 1
-    }
+      organization_id: 1,
+    },
   };
   public payments: any;
   public amount: number;
@@ -37,33 +37,33 @@ export class DonatePage extends BasePage implements OnInit {
     {
       name: 'GH₵ 5',
       active: false,
-      value: 500
+      value: 500,
     },
     {
       name: 'GH₵ 10',
       active: false,
-      value: 1000
+      value: 1000,
     },
     {
       name: 'GH₵ 20',
       active: false,
-      value: 2000
+      value: 2000,
     },
     {
       name: 'GH₵ 50',
       active: false,
-      value: 50000
+      value: 50000,
     },
     {
       name: 'GH₵ 100',
       active: false,
-      value: 100000
+      value: 100000,
     },
     {
       name: 'GH₵ 200',
       active: false,
-      value: 200000
-    }
+      value: 200000,
+    },
   ];
   constructor(
     injector: Injector,
@@ -81,7 +81,7 @@ export class DonatePage extends BasePage implements OnInit {
     try {
       const payments: any = await this.api.payStack();
       this.payments = [];
-      payments.data.forEach( (element: any) => {
+      payments.data.forEach((element: any) => {
         element.active = false;
         this.payments.push(element);
       });
@@ -98,12 +98,13 @@ export class DonatePage extends BasePage implements OnInit {
    * selectPayment
    */
   public selectPayment(payment: any, payments: any) {
-    payments.map((item: { active: boolean; }) => item.active = false);
+    payments.map((item: { active: boolean }) => (item.active = false));
     payment.active = true;
     this.amount = null;
     this.donation.label = payment.name;
     this.donation.amount = payment.value;
-    if (this.paymentType === 'monthly'){
+    if (this.paymentType === 'monthly') {
+      this.donation.label = `${this.donation.label} monthly`;
       this.donation.plan = payment.paystack_plan_code;
       this.donation.metadata.plan_id = payment.id;
     }
@@ -114,15 +115,16 @@ export class DonatePage extends BasePage implements OnInit {
    * submit
    */
   public submit() {
-    let errorText = 'You must select or enter an amount defore making your donation';
-    if (this.paymentType === 'monthly'){
+    let errorText =
+      'You must select or enter an amount defore making your donation';
+    if (this.paymentType === 'monthly') {
       errorText = 'You must select an amount defore making your donation';
     } else if (this.amount) {
       this.donation.label = `GH₵ ${this.amount}`;
       this.donation.amount = this.amount * 100;
     }
 
-    if (this.donation.label === ''){
+    if (this.donation.label === '') {
       return this.showToast(errorText, 3000, undefined);
     }
 

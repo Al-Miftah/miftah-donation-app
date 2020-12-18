@@ -64,7 +64,7 @@ export class AuthService {
     if (this.accessToken) {
       const expDate = new Date(this.tokenExpiration);
       const date = new Date();
-      return (date.getTime() < expDate.getTime());
+      return date.getTime() < expDate.getTime();
     }
     return false;
   }
