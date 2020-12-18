@@ -14,16 +14,16 @@ export class ProfilePage extends BasePage implements OnInit {
   public pwd = {
     current_password: '',
     password: '',
-    password_confirmation: ''
+    password_confirmation: '',
   };
   public user: any = {
-    name: this.auth.user.name
+    name: this.auth.user.name,
   };
   constructor(
     injector: Injector,
     private auth: AuthService,
     private api: ApiService
-    ) {
+  ) {
     super(injector);
   }
 
@@ -37,7 +37,11 @@ export class ProfilePage extends BasePage implements OnInit {
    * submit
    */
   public async submit() {
-    if (this.pwd.current_password === '' || this.pwd.password === '' || this.pwd.password_confirmation === '') {
+    if (
+      this.pwd.current_password === '' ||
+      this.pwd.password === '' ||
+      this.pwd.password_confirmation === ''
+    ) {
       return this.showToast('All fields are required', 3000, undefined);
     }
 
@@ -46,7 +50,11 @@ export class ProfilePage extends BasePage implements OnInit {
     }
 
     if (this.pwd.password.length < 6) {
-      return this.showToast('new password must be more than 6 characters', 3000, undefined);
+      return this.showToast(
+        'new password must be more than 6 characters',
+        3000,
+        undefined
+      );
     }
 
     try {
@@ -62,16 +70,15 @@ export class ProfilePage extends BasePage implements OnInit {
    * update
    */
   public async update() {
-    if (this.user.name === ''){
+    if (this.user.name === '') {
       return this.showToast('Name field is required', 3000, undefined);
     }
 
     try {
-      this.auth.user.avatar = 'https://gravatar.com/avatar/3f33b9320dbd13228e23a8acfa174222?s=400&d=robohash&r=x';
       await this.api.updateProfile(this.user);
 
       for (const item in this.auth.user) {
-        if (item !== 'name'){
+        if (item !== 'name') {
           this.user[item] = this.auth.user[item];
         }
       }
@@ -83,5 +90,4 @@ export class ProfilePage extends BasePage implements OnInit {
       this.logError(error);
     }
   }
-
 }
