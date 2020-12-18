@@ -108,7 +108,7 @@ export class DonatePage extends BasePage implements OnInit {
       this.donation.label = `${this.donation.label} monthly`;
       this.donation.plan = payment.paystack_plan_code;
       this.donation.metadata.plan_id = payment.id;
-    }else {
+    } else {
       this.amount = payment.value / 100;
     }
     this.donation.metadata.payment_type = this.paymentType;

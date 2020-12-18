@@ -29,3 +29,8 @@ npm-debug.log*
 /platforms
 /plugins
 /www
+
+apk.apk
+BytAlMal.apk
+zipalign.exe
+hottseat.keystore
