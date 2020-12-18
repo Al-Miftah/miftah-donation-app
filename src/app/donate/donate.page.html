@@ -1,0 +1,79 @@
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Donate Now
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-segment (ionChange)="segmentChanged($event)" value="monthly">
+    <ion-segment-button value="monthly">
+      <ion-label>Monthly Payment</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="onetime">
+      <ion-label>Onetime Payment</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="paymentType" style="padding: 12px;">
+    <div *ngSwitchCase="'monthly'">
+      <ion-spinner [hidden]="payments" color="primary"></ion-spinner>
+      <ion-grid *ngIf="payments">
+        <ion-row>
+          <ion-col size="6" *ngFor="let payment of payments">
+            <ion-card type="button" style="text-align:center" [color]="payment.active ? 'primary': ''" (click)="selectPayment(payment, payments)">
+              <ion-card-header>
+                <h5>
+                  <ion-icon *ngIf="payment.active" name="checkmark-outline"></ion-icon>
+                  {{payment?.name}}
+                </h5>
+              </ion-card-header>
+              <!-- <ion-card-content >
+                <p>{{payment?.description}}</p>
+              </ion-card-content> -->
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div style="padding: 12px 0;">
+        <ion-button (click)="submit()" size="large" type="submit" expand="full" color="primary">
+          Donate&nbsp;&nbsp;
+          <ion-icon src="assets/donation.svg"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+    <div *ngSwitchCase="'onetime'">
+      <ion-grid *ngIf="onetimePayments">
+        <ion-row>
+          <ion-col size="6" *ngFor="let payment of onetimePayments">
+            <ion-card type="button" style="text-align:center" [color]="payment.active ? 'primary': ''" (click)="selectPayment(payment, onetimePayments)">
+              <ion-card-header>
+                <h5>
+                  <ion-icon *ngIf="payment.active" name="checkmark-outline"></ion-icon>
+                  {{payment?.name}}
+                </h5>
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-item>
+        <ion-label>GHS</ion-label>
+        <ion-input type="number" name="amount" [(ngModel)]="amount" placeholder="Enter Amount"></ion-input>
+      </ion-item>
+      <div style="padding: 12px 0;">
+        <ion-button (click)="submit()" size="large" type="submit" expand="full" color="primary">
+          Donate&nbsp;&nbsp;
+          <ion-icon src="assets/donation.svg"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+  </div>
+
+  <!-- <ion-spinner id="spinner" color="primary"></ion-spinner> -->
+
+</ion-content>

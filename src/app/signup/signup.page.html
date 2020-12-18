@@ -1,0 +1,41 @@
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Register
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list style="padding: 12px;">
+    <form (ngSubmit)="submit()">
+      <ion-item>
+        <ion-label position="stacked">Full Name</ion-label>
+        <ion-input type="text" name="fullname" [(ngModel)]="user.name" placeholder="Full Name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Country</ion-label>
+        <ion-select name="code" [(ngModel)]="code.code" value="code.code" okText="Okay" cancelText="Dismiss">
+          <ion-select-option  *ngFor="let code of codes" [value]="code.code">{{code.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{code.code}}</ion-label>
+        <ion-input type="number" name="phone_number" [(ngModel)]="user.phone_number" placeholder="244xxxxxx"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input type="password" name="password" [(ngModel)]="user.password" placeholder="Password" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Confirm Password</ion-label>
+        <ion-input type="password" name="password2" [(ngModel)]="user.password_confirmation" placeholder="Re-Enter Password" ></ion-input>
+      </ion-item>
+      <div style="padding: 12px 0;">
+        <ion-button type="submit" expand="full" color="primary">Register</ion-button>
+      </div>
+    </form>
+  </ion-list>
+</ion-content>

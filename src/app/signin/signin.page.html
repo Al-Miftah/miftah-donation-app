@@ -1,0 +1,35 @@
+<ion-content>
+  <div id="header">
+    <div id="title">
+      <h1>BYT AL-MAL</h1>
+      <p>Islamic Brotherhood for Byt Al-Mal Donation Platform</p>
+    </div>
+  </div>
+  <ion-list style="padding: 12px;">
+    <form (ngSubmit)="submit()">
+      <ion-item>
+        <ion-label position="stacked">Country</ion-label>
+        <ion-select name="code" [(ngModel)]="code.code" value="code.code" okText="Okay" cancelText="Dismiss">
+          <ion-select-option  *ngFor="let code of codes" [value]="code.code">{{code.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{code.code}}</ion-label>
+        <ion-input type="number" name="phone_number" [(ngModel)]="user.phone_number" placeholder="244xxxxxx"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input type="password" name="password" [(ngModel)]="user.password" placeholder="Password" ></ion-input>
+      </ion-item>
+      <!-- <div style="text-align: center;">
+        <p [routerLink]="['/forgotpassword']">Forgot Password?</p>
+      </div> -->
+      <div style="padding: 12px 0;">
+        <ion-button type="submit" expand="full" color="medium">Log In</ion-button>
+      </div>
+    </form>
+    <div style="padding: 12px 0;">
+      <ion-button expand="full" [routerLink]="['/signup']" color="primary">Register</ion-button>
+    </div>
+  </ion-list>
+</ion-content>

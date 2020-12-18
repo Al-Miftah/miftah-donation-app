@@ -1,0 +1,20 @@
+ion-item{
+    padding: 12px 0;
+}
+div#header{
+    background-color: #2dd36f; 
+    height: 40%;
+    width: 100%;
+    margin-top: -30px;
+}
+div#title{
+    text-align: center;
+    width: 100%;
+    color: var(--ion-color-light);
+    padding-top: 70px;
+    h1{
+        font-family: 'Freckle Face', cursive;
+        font-size: 40px;
+        font-weight: 900;      
+    }
+}

@@ -1,5 +1,7 @@
 {
   "name": "fisabilillahApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

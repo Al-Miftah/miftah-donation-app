@@ -1,20 +1,70 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar color="primary">
     <ion-title>
-      Blank
+      Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar>
+    <ion-toolbar color="primary">
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div>
+    <h2>Best Way of Protection is <br><span>SADQA</span></h2>
   </div>
+
+  <ion-row>
+    <ion-col size="12">
+      <ion-card [routerLink]="['/donate']">
+        <ion-item>
+          <ion-icon style="font-size: 100px;" src="assets/donate.svg" slot="start"></ion-icon>
+          <ion-button style="margin-left: -20px;" size="large" fill="clear">Donate Now</ion-button>
+        </ion-item>
+      </ion-card>
+    </ion-col>
+    <!-- <ion-col size="6">
+      <ion-card [routerLink]="['/profile']">
+        <ion-thumbnail class="thumbnail">
+          <img src="assets/account.svg">
+        </ion-thumbnail>
+        <ion-label>My Account</ion-label>
+        <div class="space"></div>
+      </ion-card>
+    </ion-col> -->
+    <ion-col size="4">
+      <ion-card [routerLink]="['/about']">
+        <ion-thumbnail class="thumbnail">
+          <img src="assets/moon.svg">
+        </ion-thumbnail>
+        <ion-label>About Us</ion-label>
+        <div class="space"></div>
+      </ion-card>
+    </ion-col>
+    <ion-col size="4">
+      <ion-card [routerLink]="['/contact']">
+        <ion-thumbnail class="thumbnail">
+          <img src="assets/phone.svg">
+        </ion-thumbnail>
+        <ion-label>Contact Us</ion-label>
+        <div class="space"></div>
+      </ion-card>
+    </ion-col>
+    <ion-col size="4">
+      <ion-card (click)="logout()">
+        <ion-thumbnail class="thumbnail">
+          <img src="assets/logout.svg">
+        </ion-thumbnail>
+        <ion-label>Sign Out</ion-label>
+        <div class="space"></div>
+      </ion-card>
+    </ion-col>
+    <ion-col size="12" style="padding: 12px;">
+      <ion-button size="large" [routerLink]="['/transactions']" expand="full" color="primary">Transactions</ion-button>
+    </ion-col>
+  </ion-row>
+
 </ion-content>

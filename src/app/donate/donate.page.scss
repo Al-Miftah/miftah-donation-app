@@ -1,0 +1,22 @@
+ion-item{
+    padding-top: 15px;
+    span{
+        position: absolute;
+        font-size: 10px;
+        top: 0;
+    }
+
+}
+
+ion-spinner, #spinner{
+    position: relative;
+    transform: translateX(-50%) scale(2) !important;
+    left: 50%;
+}
+
+#spinner{
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(2) !important;
+    z-index: 999999;
+}
