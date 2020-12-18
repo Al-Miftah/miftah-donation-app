@@ -3,10 +3,59 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="edit = !edit" fill="clear">
+        <ion-icon name="pencil"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>
-      Account
+      Profile
     </ion-title>
   </ion-toolbar>
-</ion-header><ion-content>
+</ion-header>
+<ion-content>
 
+
+  <ion-segment (ionChange)="segmentChanged($event)" value="userInfo">
+    <ion-segment-button value="userInfo">
+      <ion-label>User Information</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="password">
+      <ion-label>Change Password</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-list [ngSwitch]="profile" style="padding: 12px;">
+    <div *ngSwitchCase="'userInfo'">
+      <ion-item>
+          <span *ngIf="!edit">{{auth.user.name}}</span>
+          <ion-label position="stacked" *ngIf="edit">full name</ion-label>
+          <ion-input *ngIf="edit" type="text" name="name" [(ngModel)]="user.name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <span *ngIf="!edit">{{auth.user.phone_number}}</span>
+        <ion-input disabled *ngIf="edit" type="text" name="phone_number" [(ngModel)]="auth.user.phone_number" placeholder="244xxxxxx"></ion-input>
+      </ion-item>
+      <div *ngIf="edit" style="padding: 12px 0;">
+        <ion-button (click)="update()" size="large" expand="full" color="primary">Update</ion-button>
+      </div>
+    </div>
+    <div *ngSwitchCase="'password'">
+      <ion-item>
+        <ion-label position="stacked">Enter Current Password</ion-label>
+        <ion-input type="password" name="password" [(ngModel)]="pwd.current_password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Enter New Password</ion-label>
+        <ion-input type="password" name="password" [(ngModel)]="pwd.password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Enter New Password Again</ion-label>
+        <ion-input type="password" name="password" [(ngModel)]="pwd.password_confirmation"></ion-input>
+      </ion-item>
+      <div style="padding: 12px 0;">
+        <ion-button (click)="submit()" size="large" expand="full" color="primary">Submit</ion-button>
+      </div>
+    </div>
+  </ion-list>
 </ion-content>

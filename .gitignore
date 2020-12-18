@@ -30,7 +30,7 @@ npm-debug.log*
 /plugins
 /www
 
-apk.apk
-BytAlMal.apk
-zipalign.exe
-hottseat.keystore
+/apk.apk
+/BytAlMal.apk
+/zipalign.exe
+/hottseat.keystore

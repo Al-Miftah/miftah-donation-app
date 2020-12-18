@@ -50,6 +50,7 @@ export class ApiService {
   public updateProfile(data: {
     name?: string;
     phone_number?: string;
+    avatar?: string;
   }): Promise<any> {
     return this.http.patch(`${AppConfig.BASE_URL}/user/profile`, data);
   }
@@ -58,18 +59,18 @@ export class ApiService {
    * changePassword
    */
   public changePassword(data: {
-    'current-password': string;
+    current_password: string;
     password: string;
     password_confirmation: string;
   }): Promise<any> {
-    return this.http.post(`${AppConfig.BASE_URL}/profile/password`, data);
+    return this.http.patch(`${AppConfig.BASE_URL}/user/profile/password`, data);
   }
 
   /**
    * getNotifications
    */
   public getNotifications(): Promise<any> {
-    return this.http.get(`${AppConfig.BASE_URL}/profile/notifications`);
+    return this.http.get(`${AppConfig.BASE_URL}/user/profile/notifications`);
   }
 
   /* EMAIL VERIFICATION */

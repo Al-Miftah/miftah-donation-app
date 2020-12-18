@@ -26,15 +26,6 @@
         </ion-item>
       </ion-card>
     </ion-col>
-    <!-- <ion-col size="6">
-      <ion-card [routerLink]="['/profile']">
-        <ion-thumbnail class="thumbnail">
-          <img src="assets/account.svg">
-        </ion-thumbnail>
-        <ion-label>My Account</ion-label>
-        <div class="space"></div>
-      </ion-card>
-    </ion-col> -->
     <ion-col size="4">
       <ion-card [routerLink]="['/about']">
         <ion-thumbnail class="thumbnail">
@@ -45,6 +36,15 @@
       </ion-card>
     </ion-col>
     <ion-col size="4">
+      <ion-card [routerLink]="['/profile']">
+        <ion-thumbnail class="thumbnail">
+          <img src="assets/account.svg">
+        </ion-thumbnail>
+        <ion-label>My Account</ion-label>
+        <div class="space"></div>
+      </ion-card>
+    </ion-col>
+    <!-- <ion-col size="4">
       <ion-card [routerLink]="['/contact']">
         <ion-thumbnail class="thumbnail">
           <img src="assets/phone.svg">
@@ -52,7 +52,7 @@
         <ion-label>Contact Us</ion-label>
         <div class="space"></div>
       </ion-card>
-    </ion-col>
+    </ion-col> -->
     <ion-col size="4">
       <ion-card (click)="logout()">
         <ion-thumbnail class="thumbnail">
