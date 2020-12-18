@@ -19,9 +19,6 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (this.platform.is('cordova')) {
-      return;
-    }
     const dupReq = req.clone({
       setHeaders: {
         'Content-Type': 'application/json',

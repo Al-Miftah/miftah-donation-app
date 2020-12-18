@@ -53,17 +53,17 @@ export class DonatePage extends BasePage implements OnInit {
     {
       name: 'GH₵ 50',
       active: false,
-      value: 50000,
+      value: 5000,
     },
     {
       name: 'GH₵ 100',
       active: false,
-      value: 100000,
+      value: 10000,
     },
     {
       name: 'GH₵ 200',
       active: false,
-      value: 200000,
+      value: 20000,
     },
   ];
   constructor(
@@ -108,6 +108,8 @@ export class DonatePage extends BasePage implements OnInit {
       this.donation.label = `${this.donation.label} monthly`;
       this.donation.plan = payment.paystack_plan_code;
       this.donation.metadata.plan_id = payment.id;
+    }else {
+      this.amount = payment.value / 100;
     }
     this.donation.metadata.payment_type = this.paymentType;
   }

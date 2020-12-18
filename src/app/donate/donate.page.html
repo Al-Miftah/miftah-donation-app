@@ -25,7 +25,7 @@
       <ion-grid *ngIf="payments">
         <ion-row>
           <ion-col size="6" *ngFor="let payment of payments">
-            <ion-card type="button" style="text-align:center" [color]="payment.active ? 'primary': ''" (click)="selectPayment(payment, payments)">
+            <ion-card type="button" style="text-align:center" [color]="payment.active ? 'primary': 'light'" (click)="selectPayment(payment, payments)">
               <ion-card-header>
                 <h5>
                   <ion-icon *ngIf="payment.active" name="checkmark-outline"></ion-icon>
@@ -50,7 +50,7 @@
       <ion-grid *ngIf="onetimePayments">
         <ion-row>
           <ion-col size="6" *ngFor="let payment of onetimePayments">
-            <ion-card type="button" style="text-align:center" [color]="payment.active ? 'primary': ''" (click)="selectPayment(payment, onetimePayments)">
+            <ion-card type="button" style="text-align:center" [color]="payment.active ? 'primary': 'light'" (click)="selectPayment(payment, onetimePayments)">
               <ion-card-header>
                 <h5>
                   <ion-icon *ngIf="payment.active" name="checkmark-outline"></ion-icon>
@@ -62,7 +62,7 @@
         </ion-row>
       </ion-grid>
       <ion-item>
-        <ion-label>GHS</ion-label>
+        <ion-label>GH₵</ion-label>
         <ion-input type="number" name="amount" [(ngModel)]="amount" placeholder="Enter Amount"></ion-input>
       </ion-item>
       <div style="padding: 12px 0;">

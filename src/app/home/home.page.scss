@@ -35,6 +35,13 @@ ion-card{
   }
 }
 
+ion-item{
+  --background: #ffffff
+  .item-native{
+    background-color: #ffffff;
+  }
+}
+
 h2{
   text-align: center;
   font-weight: 100;

@@ -5,7 +5,7 @@ export class AppConfig {
   }
 
   public static get APP_UUID(): string {
-    return 'com.miftah.donation';
+    return 'com.miftah.bytlamal';
   }
 
   public static get PLATFORM(): string {
