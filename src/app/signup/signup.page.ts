@@ -1,4 +1,5 @@
 import { Component, Injector, OnInit } from '@angular/core';
+import { FirebaseX } from '@ionic-native/firebase-x/ngx';
 import { BasePage } from '../base/base';
 import { ApiService } from '../services/api/api.service';
 import { CountryService } from '../services/country/country.service';
@@ -15,6 +16,7 @@ export class SignupPage extends BasePage implements OnInit {
     phone_number: '',
     password: '',
     password_confirmation: '',
+    device_token: '',
   };
   public code = {
     code: '+233',
@@ -25,6 +27,7 @@ export class SignupPage extends BasePage implements OnInit {
     injector: Injector,
     private country: CountryService,
     private api: ApiService,
+    private firebaseX: FirebaseX,
     private events: EventsService
   ) {
     super(injector);
@@ -72,6 +75,7 @@ export class SignupPage extends BasePage implements OnInit {
 
     this.showLoadingView();
     try {
+      this.user.device_token = await this.firebaseX.getToken();
       const resp: any = await this.api.register(this.user);
       this.events.publish('user:login', resp.data);
       this.navigateRoute('home');

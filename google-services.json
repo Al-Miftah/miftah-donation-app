@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "88327329082",
+    "project_id": "miftah-donations",
+    "storage_bucket": "miftah-donations.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88327329082:android:beed8f389664dfb33e6c03",
+        "android_client_info": {
+          "package_name": "com.miftah.bytlamal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "88327329082-vod07h9m8c6os3o4r92489gu8kp3eo3i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8Mdo-rsfgUXBL0YH29RPP-CYbUXkOjiA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "88327329082-vod07h9m8c6os3o4r92489gu8kp3eo3i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

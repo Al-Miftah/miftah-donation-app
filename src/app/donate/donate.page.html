@@ -21,7 +21,9 @@
 
   <div [ngSwitch]="paymentType" style="padding: 12px;">
     <div *ngSwitchCase="'monthly'">
-      <ion-spinner [hidden]="payments" color="primary"></ion-spinner>
+      <div [hidden]="payments" style="padding: 12px 0;">
+        <ion-spinner  color="primary"></ion-spinner>
+      </div>
       <ion-grid *ngIf="payments">
         <ion-row>
           <ion-col size="6" *ngFor="let payment of payments">

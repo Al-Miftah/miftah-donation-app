@@ -9,6 +9,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <div [hidden]="transactions" style="padding: 12px 0;">
+    <ion-spinner  color="primary"></ion-spinner>
+  </div>
   <ion-list>
     <ion-item *ngFor="let transaction of transactions">
       <ion-label class="ion-text-wrap">

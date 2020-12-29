@@ -12,7 +12,7 @@ import { AuthService } from '../services/auth/auth.service';
 export class TransactionsPage extends BasePage implements OnInit {
   transactions: any;
   constructor(injector: Injector, private api: ApiService) {
-    super(injector);
+    super(injector); // 024 479 4638
   }
 
   ngOnInit() {
@@ -22,8 +22,7 @@ export class TransactionsPage extends BasePage implements OnInit {
   private async getTransactions() {
     try {
       const transactions = await this.api.getDonations();
-      this.transactions = transactions.data;
-      console.log(this.transactions);
+      this.transactions = transactions.data.reverse();
     } catch (error) {
       this.logError(error);
     }

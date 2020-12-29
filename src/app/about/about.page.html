@@ -32,7 +32,9 @@
       <ion-text color="dark">
         <p>
           <ion-icon color="secondary" name="call-outline"></ion-icon> Call / <ion-icon color="primary" name="logo-whatsapp"></ion-icon> WhatsApp<br/>
-          +233244890170 / +233208722189 / +233243844983 / +233553706080 / +233242828501
+          <span (click)="processNumber(number)" *ngFor="let number of numbers;let lastItem = last;">
+            {{number}} <span *ngIf="!lastItem">/</span>
+          </span>
         </p>
         <p>
           <ion-icon color="secondary" name="mail-outline"></ion-icon> Email<br/>

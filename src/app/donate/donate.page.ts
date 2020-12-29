@@ -75,17 +75,22 @@ export class DonatePage extends BasePage implements OnInit {
   }
 
   ngOnInit() {
+    if (window.localStorage.getItem(btoa('PAYMENT_OPTIONS'))){
+      this.payments = JSON.parse(window.localStorage.getItem(btoa('PAYMENT_OPTIONS')));
+    }
     this.getPaymentOptions();
   }
 
   private async getPaymentOptions() {
     try {
       const payments: any = await this.api.payStack();
-      this.payments = [];
+      const options = [];
       payments.data.forEach((element: any) => {
         element.active = false;
-        this.payments.push(element);
+        options.push(element);
       });
+      this.payments = options;
+      window.localStorage.setItem(btoa('PAYMENT_OPTIONS'), JSON.stringify(this.payments));
     } catch (error) {
       this.logError(error);
     }
