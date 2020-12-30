@@ -10,8 +10,9 @@ import { EventsService } from '../services/events/events.service';
   styleUrls: ['./signin.page.scss'],
 })
 export class SigninPage extends BasePage implements OnInit {
+  public phoneNumber: number = null;
   public user = {
-    phone_number: '',
+    phone_number: null,
     password: '',
   };
   public code = {
@@ -32,10 +33,11 @@ export class SigninPage extends BasePage implements OnInit {
   ngOnInit() {}
 
   async submit() {
-    if (this.user.password === '' || this.user.phone_number === '') {
+    if (this.user.password === '' || this.phoneNumber === null) {
       return this.showToast('Please fill all required fields', 3000, undefined);
     }
 
+    this.user.phone_number = this.phoneNumber;
     if (
       this.user.phone_number.length === 10 &&
       this.user.phone_number.substr(0, 1) === '0'
@@ -51,7 +53,11 @@ export class SigninPage extends BasePage implements OnInit {
       this.showContentView();
     } catch (error) {
       this.showContentView();
-      this.showToast(error.message, 3000, undefined);
+      const message =
+        error.data.message === 'Unauthenticated'
+          ? 'Invalid Phone number or password'
+          : error.data.message;
+      this.showToast(message, 3000, undefined);
       this.logError(error);
     }
   }

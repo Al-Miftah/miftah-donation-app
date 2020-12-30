@@ -220,4 +220,11 @@ export abstract class BasePage {
   public navigateRoute(page: any, params: any = {}) {
     return this.router.navigate([page], params);
   }
+
+  /**
+   * isCordova
+   */
+  public isCordova(): boolean {
+    return this.platform.is('cordova');
+  }
 }

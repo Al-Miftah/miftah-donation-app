@@ -32,12 +32,14 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       this.setupEvents();
-      this.setupStatusBar();
-      this.setupPushNotifications();
-      this.setupAndroidHeaderColor();
-      setTimeout(() => {
-        this.splashScreen.hide();
-      }, 1000);
+      if (this.platform.is('cordova')) {
+        this.setupStatusBar();
+        this.setupPushNotifications();
+        this.setupAndroidHeaderColor();
+        setTimeout(() => {
+          this.splashScreen.hide();
+        }, 1000);
+      }
     });
   }
 

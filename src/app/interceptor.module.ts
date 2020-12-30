@@ -27,9 +27,22 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
       },
     });
     return next.handle(dupReq).pipe(
-      catchError((error) => {
-        if (error.error) {
-          return throwError(error.error);
+      catchError((e) => {
+        if (e.status === 422) {
+          let message = '';
+          if (e.error.errors) {
+            for (const msg in e.error.errors) {
+              if (e.error.errors[msg] && e.error.errors[msg][0]) {
+                message += `${e.error.errors[msg][0]} `;
+              }
+            }
+          } else {
+            message += e.error.message;
+          }
+          return throwError({message});
+        }
+        if (e.error) {
+          return throwError(e.error);
         }
         return throwError('Request time out. kindly try again');
       })

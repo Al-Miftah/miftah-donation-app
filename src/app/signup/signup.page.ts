@@ -11,9 +11,10 @@ import { EventsService } from '../services/events/events.service';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage extends BasePage implements OnInit {
+  public phoneNumber: number = null;
   public user = {
     name: '',
-    phone_number: '',
+    phone_number: null,
     password: '',
     password_confirmation: '',
     fcm_token: '',
@@ -37,15 +38,11 @@ export class SignupPage extends BasePage implements OnInit {
   ngOnInit() {}
 
   async submit() {
-    if (this.user.name === '' || this.user.password === '') {
+    if (this.user.name === '' || this.phoneNumber === null) {
       return this.showToast('Please fill all required fields', 3000, undefined);
     }
 
-    if (
-      this.user.phone_number === '' ||
-      this.user.phone_number.length < 9 ||
-      this.user.phone_number.length > 10
-    ) {
+    if (this.phoneNumber === null || this.phoneNumber.toString().length !== 9) {
       return this.showToast(
         'Please enter a valid phone number',
         3000,
@@ -65,6 +62,7 @@ export class SignupPage extends BasePage implements OnInit {
       return this.showToast('Passwords do not match', 3000, undefined);
     }
 
+    this.user.phone_number = this.phoneNumber.toString();
     if (
       this.user.phone_number.length === 10 &&
       this.user.phone_number.substr(0, 1) === '0'
@@ -75,7 +73,9 @@ export class SignupPage extends BasePage implements OnInit {
 
     this.showLoadingView();
     try {
-      this.user.fcm_token = await this.firebaseX.getToken();
+      if (this.isCordova()) {
+        this.user.fcm_token = await this.firebaseX.getToken();
+      }
       const resp: any = await this.api.register(this.user);
       this.events.publish('user:login', resp.data);
       this.navigateRoute('home');
