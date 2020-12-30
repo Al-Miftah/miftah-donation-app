@@ -16,7 +16,7 @@ export class SignupPage extends BasePage implements OnInit {
     phone_number: '',
     password: '',
     password_confirmation: '',
-    device_token: '',
+    fcm_token: '',
   };
   public code = {
     code: '+233',
@@ -75,7 +75,7 @@ export class SignupPage extends BasePage implements OnInit {
 
     this.showLoadingView();
     try {
-      this.user.device_token = await this.firebaseX.getToken();
+      this.user.fcm_token = await this.firebaseX.getToken();
       const resp: any = await this.api.register(this.user);
       this.events.publish('user:login', resp.data);
       this.navigateRoute('home');

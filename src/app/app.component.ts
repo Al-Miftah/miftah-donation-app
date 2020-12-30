@@ -93,7 +93,7 @@ export class AppComponent {
   }
 
   private async registerToken(token: string) {
-    await this.api.updateProfile({ device_token: token });
+    await this.api.updateProfile({ fcm_token: token });
   }
 
   private async showAlert(

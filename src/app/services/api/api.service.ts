@@ -24,7 +24,7 @@ export class ApiService {
     name: string;
     phone_number: string;
     password: string;
-    device_token: string;
+    fcm_token: string;
   }): Promise<any> {
     return this.http.post(`${AppConfig.BASE_URL}/user/auth/register`, data);
   }
@@ -52,7 +52,7 @@ export class ApiService {
     name?: string;
     phone_number?: string;
     avatar?: string;
-    device_token?: string;
+    fcm_token?: string;
   }): Promise<any> {
     return this.http.patch(`${AppConfig.BASE_URL}/user/profile`, data);
   }
