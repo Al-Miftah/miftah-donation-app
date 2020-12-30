@@ -13,12 +13,12 @@ export class AboutPage implements OnInit {
     '+233208722189',
     '+233243844983',
     '+233553706080',
-    '+233242828501'
+    '+233242828501',
   ];
   constructor(
     private callNumber: CallNumber,
-    private actionSheetController: ActionSheetController,
-    ) {}
+    private actionSheetController: ActionSheetController
+  ) {}
 
   ngOnInit() {}
 
@@ -31,20 +31,21 @@ export class AboutPage implements OnInit {
           icon: 'call-outline',
           handler: async () => {
             await this.callNumber.callNumber(phoneNumber, true);
-          }
+          },
         },
         {
-        text: 'WhatsApp',
-        icon: 'logo-whatsapp',
-        handler: () => {
-          window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}`);
-        }
-      },
-      {
-        text: 'Cancel',
-        icon: 'close-outline',
-        role: 'cancel'
-      }]
+          text: 'WhatsApp',
+          icon: 'logo-whatsapp',
+          handler: () => {
+            window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}`);
+          },
+        },
+        {
+          text: 'Cancel',
+          icon: 'close-outline',
+          role: 'cancel',
+        },
+      ],
     });
     await actionSheet.present();
   }

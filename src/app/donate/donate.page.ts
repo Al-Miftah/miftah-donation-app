@@ -75,8 +75,10 @@ export class DonatePage extends BasePage implements OnInit {
   }
 
   ngOnInit() {
-    if (window.localStorage.getItem(btoa('PAYMENT_OPTIONS'))){
-      this.payments = JSON.parse(window.localStorage.getItem(btoa('PAYMENT_OPTIONS')));
+    if (window.localStorage.getItem(btoa('PAYMENT_OPTIONS'))) {
+      this.payments = JSON.parse(
+        window.localStorage.getItem(btoa('PAYMENT_OPTIONS'))
+      );
     }
     this.getPaymentOptions();
   }
@@ -90,7 +92,10 @@ export class DonatePage extends BasePage implements OnInit {
         options.push(element);
       });
       this.payments = options;
-      window.localStorage.setItem(btoa('PAYMENT_OPTIONS'), JSON.stringify(this.payments));
+      window.localStorage.setItem(
+        btoa('PAYMENT_OPTIONS'),
+        JSON.stringify(this.payments)
+      );
     } catch (error) {
       this.logError(error);
     }

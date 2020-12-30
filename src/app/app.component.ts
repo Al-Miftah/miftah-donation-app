@@ -24,7 +24,7 @@ export class AppComponent {
     private headerColor: HeaderColor,
     private statusBar: StatusBar,
     private firebaseX: FirebaseX,
-    private alertCtrl: AlertController,
+    private alertCtrl: AlertController
   ) {
     this.initializeApp();
   }
@@ -74,12 +74,12 @@ export class AppComponent {
   }
 
   private setupPushNotifications() {
-    this.firebaseX.onTokenRefresh().subscribe(token => {
+    this.firebaseX.onTokenRefresh().subscribe((token) => {
       this.registerToken(token);
     });
 
-    this.firebaseX.onMessageReceived().subscribe(data => {
-      if (!data.wasTapped){
+    this.firebaseX.onMessageReceived().subscribe((data) => {
+      if (!data.wasTapped) {
         const payload: any = JSON.parse(data.payload);
         this.showAlert(payload.message, payload.title);
       }
@@ -93,7 +93,7 @@ export class AppComponent {
   }
 
   private async registerToken(token: string) {
-    await this.api.updateProfile({device_token: token});
+    await this.api.updateProfile({ device_token: token });
   }
 
   private async showAlert(
